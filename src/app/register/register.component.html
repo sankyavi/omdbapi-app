@@ -1,0 +1,41 @@
+<div class="center-register-form">
+  <div class="row">
+    <div class="card-panel card-large">
+      <div class="input-field">
+        <input id="user_name" type="text" class="validate" required [(ngModel)]="User.name">
+        <label for="user_name">Name*</label>
+      </div>
+      <div class="input-field">
+        <input id="user_email" type="email" class="validate" required [(ngModel)]="User.email">
+        <label for="user_email">E-Mail*</label>
+      </div>
+      <div class="input-field">
+        <input id="user_contact" type="number" max="9999999999" class="validate" [(ngModel)]="User.contact">
+        <label for="user_contact">Contact</label>
+      </div>
+      <div class="input-field">
+        <textarea id="textarea" class="materialize-textarea" data-length="120" [(ngModel)]="User.address"></textarea>
+        <label for="textarea">Address</label>
+      </div>
+      <div class="input-field">
+        <input id="user_password" type="password" class="validate" required [(ngModel)]="User.password">
+        <label for="user_password">Password*</label>
+      </div>
+      <div class="row">
+        <button class="waves-effect waves-light btn"
+          [disabled]="!User.name || !User.email || !User.password || isRegistered"
+          (click)="register()">Register</button>
+        &nbsp;&nbsp;&nbsp;
+        <button class="waves-effect waves-light btn blue darken-4" [disabled]="! isRegistered"
+          (click)="goToLogin()">Back To Login</button>
+      </div>
+      <span>Field marked with * are mandatory</span>
+    </div>
+  </div>
+</div>
+<div *ngIf="error" class="card-panel">
+  <span class="red-text text-darken-2">You entered a wrong username or password</span>
+</div>
+<div *ngIf="loader" class="progress">
+  <div class="indeterminate"></div>
+</div>

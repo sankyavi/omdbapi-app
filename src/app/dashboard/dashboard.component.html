@@ -1,0 +1,15 @@
+<h3>
+  Dashboard
+</h3>
+
+<a [routerLink]="['/dashboard']">Dashboard</a>
+<span> | </span>
+<a [routerLink]="['/movies-explore']">Explore Movies</a>
+
+<div *ngIf="noUserReviews" class="card-panel">
+  <span class="red-text text-darken-2">You haven't reviewed any movies, Please use explore tab to see a list of
+    movies</span>
+</div>
+
+
+<router-outlet></router-outlet>

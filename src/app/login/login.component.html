@@ -1,0 +1,20 @@
+<div class="center-div">
+  <div class="row">
+      <div class="card-panel card-large">
+          <div class="input-field">
+              <input id="user_name" type="email" class="validate" required [(ngModel)]="User.email">
+              <label for="user_name">E-Mail</label>
+          </div>
+          <div class="input-field">
+              <input id="password" type="password" class="validate" required [(ngModel)]="User.password">
+              <label for="password">Password</label>
+          </div>
+          <button class="waves-effect waves-light btn blue darken-4" (click)="login()">Login</button>
+          &nbsp;&nbsp;&nbsp;
+          <button class="waves-effect waves-light btn" (click)="register()">Register</button>
+      </div>
+  </div>
+</div>
+<div *ngIf="error" class="card-panel">
+  <span class="red-text text-darken-2">You entered a wrong username or password</span>
+</div>
