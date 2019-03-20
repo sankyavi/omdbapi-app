@@ -8,7 +8,11 @@
 <span> | </span>
 <a [routerLink]="['/settings']">Settings</a>
 
-<div class="row">
+<div *ngIf="error" class="card-panel">
+  <span class="red-text text-darken-2">No Results Found</span>
+</div>
+
+<div class="row card">
   <form class="col s12">
     <div class="row">
       <div class="col s12">
@@ -21,17 +25,35 @@
           <input id="year" type="text" class="validate" [(ngModel)]="Movie.year" [ngModelOptions]="{standalone: true}">
           <label for="year">Year</label>
         </div>
+        <!-- <div class="input-field inline">
+          <select [(ngModel)]="Movie.type" [ngModelOptions]="{standalone: true}">
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">movie</option>
+            <option value="2">series</option>
+            <option value="3">episode</option>
+          </select>
+          <label>Select Type</label>
+        </div> -->
         <div class="input-field inline">
           <button class="btn waves-effect waves-light" [disabled]="!Movie.movieTitle" (click)="searchForMovies()"
             name="search">Search
             <i class="material-icons left">search</i>
           </button>
-          <!-- <a class="waves-effect waves-light btn inline" [ngClass]="{'disabled': Movie.movieName == '' }" (click)="searchForMovies()"><i class="material-icons left">search</i>Search</a> -->
         </div>
+        <div class="input-field inline">
+            <button class="btn waves-effect waves-light" (click)="resetSearchForMovies()"
+              name="search">Reset
+              <i class="material-icons left">cached</i>
+            </button>
+          </div>
       </div>
     </div>
   </form>
+  <div class="row">
+    * Movie name is mandatory.
+  </div>
 </div>
+.
 
 <div class="container">
   <div class="row">

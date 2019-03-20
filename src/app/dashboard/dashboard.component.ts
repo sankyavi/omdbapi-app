@@ -24,4 +24,9 @@ export class DashboardComponent implements OnInit {
     }
   }
 
+  deletMovieReview(id) {
+    this.localstorageservice.deleteFromLocalStorage(id);
+    this.movies = this.localstorageservice.getFromLocalStorage();
+  }
+
 }

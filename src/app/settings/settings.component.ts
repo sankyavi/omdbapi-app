@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CategoryService } from '../common/category.service';
 
 @Component({
   selector: 'app-settings',
@@ -8,11 +9,16 @@ import { Router } from '@angular/router';
 })
 export class SettingsComponent implements OnInit {
 
+  username: string;
+  cat: string;
+
   constructor(
-    private router: Router
+    private router: Router,
+    private categoryService : CategoryService
   ) { }
 
   ngOnInit() {
+    this.username = window.localStorage.getItem('user_name');
   }
 
   goToLogin() {
@@ -23,6 +29,11 @@ export class SettingsComponent implements OnInit {
   deleteProfile(){
     window.localStorage.clear();
     this.router.navigate(['/register']);
+  }
+
+  addCategory() {
+    this.categoryService.addCategory(this.cat);
+    this.cat = '';
   }
 
 }

@@ -6,7 +6,7 @@ import { MovieDetail } from './movie.model';
 @Injectable({
   providedIn: 'root'
 })
-export class MovieServiceService {
+export class MovieServiceService{
 
   private url_search = 'http://www.omdbapi.com/';
 
@@ -14,12 +14,12 @@ export class MovieServiceService {
     private http: HttpClient
   ) { }
 
-  getMovies(s: string, page, y) {
+  getMovies(s: string, page, y, type) {
     if(s === ''){
       s = 'one';
     }
     return this.http.get(`
-    ${this.url_search}?s=${s}&y=${y}&page=${page}`)
+    ${this.url_search}?s=${s}&y=${y}&page=${page}&type=${type}`)
   }
 
   getMovieDetail(id: string) : Observable<MovieDetail> {

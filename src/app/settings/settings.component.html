@@ -10,8 +10,16 @@
 
 <div class="row center-settings">
   <div class="card-panel card-large">
-    <button class="waves-effect waves-light btn blue darken-4" (click)="goToLogin()">Back To Login</button>
+    <p>Welcome {{ username }}</p>
+    <div class="input-field">
+      <input id="user_cat" type="text" class="validate" required [(ngModel)]="cat">
+      <label for="user_cat">Add Category*</label>
+    </div>
+    <div class="row">
+        <button class="waves-effect waves-light btn green darken-4" [disabled]="!cat" (click)="addCategory()">Add</button>
+    </div>
+    <button class="waves-effect waves-light btn blue darken-4" (click)="goToLogin()">Logout</button>
     &nbsp;&nbsp;&nbsp;
-    <button class="waves-effect waves-light btn blue darken-4" (click)="deleteProfile()">Delete Profile</button>
+    <button class="waves-effect waves-light btn red darken-4" (click)="deleteProfile()">Delete Profile</button>
   </div>
 </div>

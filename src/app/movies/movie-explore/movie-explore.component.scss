@@ -6,9 +6,9 @@
 .cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
  }
   
  .card {
-     flex: 0 1 24%;
+     flex: 1 1 15%;
  }

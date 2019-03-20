@@ -1,7 +1,6 @@
 import { Inject, Injectable } from '@angular/core';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 import { MovieDetail } from '../movies/movie.model';
-import { isBoolean } from 'util';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +37,15 @@ export class LocalStorageService {
 
   getFromLocalStorage() {
     return this.storage.get(this.STORAGE_KEY);
+  }
+
+  deleteFromLocalStorage(id): void {
+    const currentReviewList = this.storage.get(this.STORAGE_KEY);
+    // get index of object with id
+    var removeIndex = currentReviewList.map(function (item) { return item.imdbID; }).indexOf(id);
+    // remove object
+    currentReviewList.splice(removeIndex, 1);
+    this.storage.set(this.STORAGE_KEY, currentReviewList);
   }
 
 

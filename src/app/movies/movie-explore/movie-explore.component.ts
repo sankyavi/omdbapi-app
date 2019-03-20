@@ -11,12 +11,14 @@ export class MovieExploreComponent implements OnInit {
 
   Movie = {
     movieTitle: '',
-    year: ''
+    year: '',
+    type: ''
   }
 
   page: number = 1;
   movies: Movie[];
   total_results: number;
+  error: boolean = false;
 
   constructor(
     private movieService: MovieServiceService
@@ -29,11 +31,15 @@ export class MovieExploreComponent implements OnInit {
   }
 
   searchForMovies() {
-    this.movieService.getMovies(this.Movie.movieTitle, this.page, this.Movie.year)
+    this.error = false;
+    this.movieService.getMovies(this.Movie.movieTitle, this.page, this.Movie.year, this.Movie.type)
       .subscribe(
         response => {
           this.movies = response['Search'];
           this.total_results = response['totalResults'];
+          if(response['Error']){
+            this.error = true;
+          }
         },
         error => console.error(error)
       );
@@ -44,6 +50,18 @@ export class MovieExploreComponent implements OnInit {
     this.page = page;
     this.searchForMovies();
   }
+
+  resetSearchForMovies() {
+    this.Movie.movieTitle = '';
+    this.page = 1;
+    this.searchForMovies();
+  }
+
+  // ngAfterViewChecked() {
+  //   $(document).ready(function(){
+  //     $('select').formSelect();
+  //   });
+  // }
 
 
 }

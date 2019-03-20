@@ -23,20 +23,20 @@
           </p>
 
             <p>Select From Categories</p>
-            <div class="chip" *ngFor="let category of categories" (click)="selectedCategory(category)">
+            <div class="chip" *ngFor="let category of categories">
               {{ category }}
-              <i class="close material-icons">add</i>
+              <i class="close material-icons" (click)="selectedCategory(category)">add</i>
             </div>
 
 
-            <p>Select From Categories</p>
+            <p>Selected Categories</p>
             <div class="chip" *ngFor="let selcategory of selectedCategories">
               {{ selcategory }}
             </div>
 
             <div class="row shift-button">
               <button class="waves-effect waves-light btn blue darken-4"
-                (click)="saveReview()">Save User Review</button>
+                (click)="saveReview()">Save User Rating</button>
               </div>
         </form>
 

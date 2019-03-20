@@ -14,5 +14,8 @@
               <span *ngIf="movie.userRating">User Rating : {{ movie.userRating }}</span>
               <hr *ngIf="movie.categories">
               <span *ngIf="movie.categories">User categories : {{ movie.categories }}</span>
+              <hr *ngIf="movie.userRating">
+              <button *ngIf="movie.userRating" class="waves-effect waves-light btn red darken-4"
+              (click)="deleteReview()">Delete</button>
           </div>
         </div>
