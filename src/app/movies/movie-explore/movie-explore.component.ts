@@ -39,5 +39,11 @@ export class MovieExploreComponent implements OnInit {
       );
   }
 
+  pageChanged(page){
+    console.log(page);  
+    this.page = page;
+    this.searchForMovies();
+  }
+
 
 }

@@ -15,6 +15,9 @@ export class MovieServiceService {
   ) { }
 
   getMovies(s: string, page, y) {
+    if(s === ''){
+      s = 'one';
+    }
     return this.http.get(`
     ${this.url_search}?s=${s}&y=${y}&page=${page}`)
   }

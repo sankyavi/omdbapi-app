@@ -3,8 +3,11 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
+//3rd party
 import { StorageServiceModule } from 'angular-webstorage-service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
+// user created
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -33,7 +36,8 @@ import { AuthGuard } from './common/auth-guard';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    StorageServiceModule
+    StorageServiceModule,
+    NgxPaginationModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
