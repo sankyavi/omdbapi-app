@@ -1,3 +1,100 @@
-<p>
-  {{ movie$ | async | json}}
-</p>
+<div class="container">
+  <div class="row">
+    <div class="col s6 m6">
+      <div class="card horizontal small">
+        <div class="card-image">
+          <img src={{movie?.Poster}}>
+        </div>
+        <div class="card-stacked">
+          <div class="card-content">
+            <h4>Web Ratings</h4>
+            <ul *ngFor="let rating of movie?.Ratings">
+              <li>{{ rating.Source }} : {{ rating.Value }}</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col s6 m6">
+
+        <form action="#">
+          <p class="range-field inline">
+              How likely you are to recommend the movie (1-10)<input type="range" name="user_rating" id="user_rating" min="0" max="10" [(ngModel)]="userrating"/>
+          </p>
+
+            <p>Select From Categories</p>
+            <div class="chip" *ngFor="let category of categories" (click)="selectedCategory(category)">
+              {{ category }}
+              <i class="close material-icons">add</i>
+            </div>
+
+
+            <p>Select From Categories</p>
+            <div class="chip" *ngFor="let selcategory of selectedCategories">
+              {{ selcategory }}
+            </div>
+
+            <div class="row shift-button">
+              <button class="waves-effect waves-light btn blue darken-4"
+                (click)="saveReview()">Save User Review</button>
+              </div>
+        </form>
+
+    </div>
+  </div>
+</div>
+
+<div class="card responive padding-card">
+  <table class="responsive-table striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Year</th>
+        <th>Rated</th>
+        <th>Released</th>
+        <th>Runtime</th>
+        <th>Genre</th>
+        <th>Director</th>
+        <th>Writer</th>
+        <th>Actors</th>
+        <th>Plot</th>
+        <th>Language</th>
+        <th>Country</th>
+        <th>Awards</th>
+        <th>Metascore</th>
+        <th>imdbRating</th>
+        <th>imdbVotes</th>
+        <th>Type</th>
+        <th>DVD</th>
+        <th>BoxOffice</th>
+        <th>Production</th>
+        <th>Website</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{ movie?.Title }}</td>
+        <td>{{ movie?.Year }}</td>
+        <td>{{ movie?.Rated }}</td>
+        <td>{{ movie?.Released }}</td>
+        <td>{{ movie?.Runtime }}</td>
+        <td>{{ movie?.Genre }}</td>
+        <td>{{ movie?.Director }}</td>
+        <td>{{ movie?.Writer }}</td>
+        <td>{{ movie?.Actors }}</td>
+        <td>{{ movie?.Plot }}</td>
+        <td>{{ movie?.Language }}</td>
+        <td>{{ movie?.Country }}</td>
+        <td>{{ movie?.Awards }}</td>
+        <td>{{ movie?.Metascore }}</td>
+        <td>{{ movie?.imdbRating }}</td>
+        <td>{{ movie?.imdbVotes }}</td>
+        <td>{{ movie?.Type }}</td>
+        <td>{{ movie?.DVD }}</td>
+        <td>{{ movie?.BoxOffice }}</td>
+        <td>{{ movie?.Production }}</td>
+        <td>{{ movie?.Website }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subscription, Observable } from 'rxjs';
 import { MovieDetail } from '../movie.model';
 import { MovieServiceService } from '../movie-service.service';
 import { map, switchMap } from 'rxjs/operators';
+import { LocalStorageService } from 'src/app/common/local-storage-service';
 
 @Component({
   selector: 'app-movie-detail',
@@ -13,25 +14,39 @@ import { map, switchMap } from 'rxjs/operators';
 export class MovieDetailComponent implements OnInit {
   sub: Subscription;
   id: string;
-  movie$: Observable<MovieDetail>;
+
+  userrating: number;
+  movie: MovieDetail;
+  categories: string[] = ['category', 'category2', 'category3', 'category4'];
+  selectedCategories: string[] = [];
 
   constructor(
     private route: ActivatedRoute,
-    private movieservice: MovieServiceService) {}
+    private movieservice: MovieServiceService,
+    private localstorageservice: LocalStorageService,
+    private router: Router) {}
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-       this.id = params['id']; // (+) converts string 'id' to a number
-    });
-
-    this.movie$ = this.route.paramMap.pipe(
-      map(paramsMap => paramsMap.get('id')),
-      switchMap(carId => this.movieservice.getMovieDetail(this.id))
+    this.route.params.pipe(
+      map(params => params['id']),
+      switchMap(id => this.movieservice.getMovieDetail(id)),
+    ).subscribe( data => {
+      this.movie = data;
+    },
+    err => { console.log('err occured' + err) },
+    () => { console.log('done') }
     )
   }
 
-  ngOnDestroy() {
-    this.sub.unsubscribe();
+  selectedCategory(category) {
+    this.selectedCategories.push(category);
+  }
+
+  saveReview() {
+    this.movie['userRating'] = this.userrating.toString();
+    this.movie['categories'] = this.selectedCategories.toString();
+    this.localstorageservice.storeOnLocalStorage(this.movie);
+    this.router.navigate(['/dashboard']);
   }
 
 }

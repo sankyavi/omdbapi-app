@@ -9,12 +9,12 @@
               <input id="password" type="password" class="validate" required [(ngModel)]="User.password">
               <label for="password">Password</label>
           </div>
-          <button class="waves-effect waves-light btn blue darken-4" (click)="login()">Login</button>
+          <button class="waves-effect waves-light btn blue darken-4" [disabled]="!User.email || !User.password" (click)="login()">Login</button>
           &nbsp;&nbsp;&nbsp;
           <button class="waves-effect waves-light btn" (click)="register()">Register</button>
       </div>
   </div>
 </div>
 <div *ngIf="error" class="card-panel">
-  <span class="red-text text-darken-2">You entered a wrong username or password</span>
+  <span class="red-text text-darken-2">{{ errormessage }}</span>
 </div>

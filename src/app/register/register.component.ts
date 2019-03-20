@@ -26,8 +26,15 @@ export class RegisterComponent implements OnInit {
   }
 
   register() {
+    window.localStorage.setItem('user_name', this.User.name);
+    window.localStorage.setItem('user_email', this.User.email);
+    window.localStorage.setItem('user_password', this.User.password);
+
+    window.localStorage.setItem('user_address', this.User.address);
+    window.localStorage.setItem('user_contact', this.User.contact);
+
     this.isRegistered = true;
-    M.toast({html: 'You are registered. Please return to login page!', classes: 'rounded', displayLength: 4000});
+    //M.toast({html: 'You are registered. Please return to login page!', classes: 'rounded', displayLength: 4000});
   }
 
   goToLogin() {

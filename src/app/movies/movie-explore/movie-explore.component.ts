@@ -25,6 +25,7 @@ export class MovieExploreComponent implements OnInit {
   ngOnInit() {
     this.Movie.movieTitle = 'one';
     this.searchForMovies();
+    this.Movie.movieTitle = '';
   }
 
   searchForMovies() {

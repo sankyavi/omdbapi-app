@@ -8,5 +8,11 @@
               <span>Year : {{ movie.Year }}</span>
               <hr>
               <span>Type : {{ movie.Type }}</span>
+              <hr *ngIf="movie.imdbRating">
+              <span *ngIf="movie.imdbRating">IMDB Rating : {{ movie.imdbRating }}</span>
+              <hr *ngIf="movie.userRating">
+              <span *ngIf="movie.userRating">User Rating : {{ movie.userRating }}</span>
+              <hr *ngIf="movie.categories">
+              <span *ngIf="movie.categories">User categories : {{ movie.categories }}</span>
           </div>
         </div>

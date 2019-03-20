@@ -1,0 +1,17 @@
+<h3>
+  Dashboard
+</h3>
+
+<a [routerLink]="['/dashboard']">Dashboard</a>
+<span> | </span>
+<a [routerLink]="['/movies-explore']">Explore Movies</a>
+<span> | </span>
+<a [routerLink]="['/settings']">Settings</a>
+
+<div class="row center-settings">
+  <div class="card-panel card-large">
+    <button class="waves-effect waves-light btn blue darken-4" (click)="goToLogin()">Back To Login</button>
+    &nbsp;&nbsp;&nbsp;
+    <button class="waves-effect waves-light btn blue darken-4" (click)="deleteProfile()">Delete Profile</button>
+  </div>
+</div>

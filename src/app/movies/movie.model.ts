@@ -36,7 +36,9 @@ export interface MovieDetail {
         BoxOffice: string,
         Production: string,
         Website: string,
-        Response: string
+        Response: string,
+        userRating?: string,
+        categories?: string
 }
 
 
